@@ -47,6 +47,8 @@ O objetivo é conectar pessoas a empresas que coletam resíduos específicos, co
     <img alt="Booster" title="Booster" src="./.github/Home.svg" width="300px" />
 </h1>
 
+![Ecoleta Demo](.github/web-screen.gif)
+
 ## :rocket: Tecnologias
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
