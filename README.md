@@ -71,6 +71,8 @@ Para clonar e executar este aplicativo, você precisará do [Git](https://git-sc
 ```bash
 # Clonando o repositório
 $ git clone https://github.com/mcoutinho88/next-level-week
+
+################# BACKEND ####################
 # Acessando o diretório do backend
 $ cd './server'
 # Instalando as dependências
@@ -81,6 +83,14 @@ $ knex:migrate
 $ knex:seed
 # Rodando a aplicação em modo desenvolvimento
 $ yarn dev OU node run dev
+
+############## FRONTEND WEB ##################
+# Acessando o diretório do frontend
+$ cd './web'
+# Instalando as dependências
+$ yarn OU npm install
+# Rodando a aplicação web
+$ yarn start OU npm start
 ```
 
 ## 🤔 Como contribuir
