@@ -36,6 +36,8 @@
       "react-hooks/rules-of-hooks": "error",  // React
       "react-hooks/exhaustive-deps": "warn",  // React
       "react/jsx-filename-extension":[1, { "extensions": [".tsx"] } ],  // React
+      "jsx-a11y/label-has-associated-control": "off",
+      "@typescript-eslint/interface-name-prefix": "off",
       "import/prefer-default-export": "off",
       "@typescript-eslint/camelcase": "off",
       "camelcase":"off",
