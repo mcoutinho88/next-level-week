@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
 import {
   View,
@@ -6,23 +6,63 @@ import {
   Image,
   StyleSheet,
   Text,
-  TextInput,
+  // TextInput,
   KeyboardAvoidingView,
   Platform,
+  Picker,
 } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+
+interface IBGEUFResponse {
+  sigla: string;
+}
+
+interface IBGECityResponse {
+  nome: string;
+}
 
 const Home: React.FC = () => {
-  const [uf, setUf] = useState('');
-  const [city, setCity] = useState('');
+  const [ufs, setUfs] = useState<string[]>([]);
+  const [cities, setCities] = useState<string[]>([]);
+
+  const [selectedUf, setSelectedUf] = useState('0');
+  const [selectedCity, setSelectedCity] = useState('0');
 
   const navigation = useNavigation();
 
+  useEffect(() => {
+    axios
+      .get<IBGEUFResponse[]>(
+        'https://servicodados.ibge.gov.br/api/v1/localidades/estados',
+      )
+      .then(response => {
+        const ufInitials = response.data.map(uf => uf.sigla);
+        const sortedUfs = ufInitials.sort();
+
+        setUfs(sortedUfs);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedUf === '0') {
+      return;
+    }
+    axios
+      .get<IBGECityResponse[]>(
+        `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`,
+      )
+      .then(response => {
+        const cityNames = response.data.map(city => city.nome);
+        setCities(cityNames);
+      });
+  }, [selectedUf]);
+
   function handleNavigateToPoints(): void {
     navigation.navigate('Points', {
-      uf,
-      city,
+      uf: selectedUf,
+      city: selectedCity,
     });
   }
 
@@ -50,7 +90,26 @@ const Home: React.FC = () => {
         </View>
 
         <View style={styles.footer}>
-          <TextInput
+          <Picker
+            selectedValue={selectedUf}
+            onValueChange={itemValue => setSelectedUf(itemValue)}
+          >
+            <Picker.Item label="Selecione um estado" key="0" value="0" />
+            {ufs.map(uf => (
+              <Picker.Item label={uf} key={uf} value={uf} />
+            ))}
+          </Picker>
+
+          <Picker
+            selectedValue={selectedCity}
+            onValueChange={itemValue => setSelectedCity(itemValue)}
+          >
+            <Picker.Item label="Selecione uma cidade" key="0" value="0" />
+            {cities.map(city => (
+              <Picker.Item label={city} key={city} value={city} />
+            ))}
+          </Picker>
+          {/* <TextInput
             style={styles.input}
             placeholder="Digite a UF"
             value={uf}
@@ -65,7 +124,7 @@ const Home: React.FC = () => {
             value={city}
             autoCorrect={false}
             onChangeText={text => setCity(text)}
-          />
+          /> */}
           <RectButton style={styles.button} onPress={handleNavigateToPoints}>
             <View style={styles.buttonIcon}>
               <Icon name="arrow-right" color="#FFF" size={24} />
