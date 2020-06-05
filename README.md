@@ -2,8 +2,8 @@
     <img alt="NextLevelWeek" title="NextLevelWeek" src="./.github/logo.svg" width="200px" />
 </h1>
 
-<h4 align="center">
-	:construction: Next Level Week 1.0 🚀 In progress.. :construction:
+<h1 align="center" style='font-weight: bold'>
+	 Next Level Week 1.0 🚀 
 </h4>
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/mcoutinho88/next-level-week?color=green">
@@ -49,6 +49,10 @@ O objetivo é conectar pessoas a empresas que coletam resíduos específicos, co
 
 ![Ecoleta Demo](.github/web-screen.gif)
 
+<h1 align="center">
+  <img alt="Mobile App Demo" src="./.github/app-demo-v1.gif" width="150px" />
+</h1>
+
 ## :rocket: Tecnologias
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
@@ -66,7 +70,7 @@ Para acessar o layout, basta acessar o seguinte link: [Figma](<https://www.figma
 
 Para clonar e executar este aplicativo, você precisará do [Git](https://git-scm.com) instalado no seu computador, ou simplesmente baixe o aplicativo compactado [LINK](https://github.com/mcoutinho88/next-level-week/archive/master.zip)
 
-### Install Em construção :construction:
+### Instalando
 
 ```bash
 # Clonando o repositório
@@ -91,6 +95,16 @@ $ cd './web'
 $ yarn OU npm install
 # Rodando a aplicação web
 $ yarn start OU npm start
+
+################ MOBILE #####################
+# Acessando o diretório do Mobile
+$ cd './mobile'
+# Instalando as dependências
+$ yarn OU npm install
+# Rodando a aplicação mobile
+$ expo start
+# No seu celular, baixar o aplicativo Expo via Google Play ou Apple Store
+# Scan QRCode do seu browser com o aplicativo Expo
 ```
 
 ## 🤔 Como contribuir
